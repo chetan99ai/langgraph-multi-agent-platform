@@ -4,6 +4,8 @@ This repository contains a production-grade, generic, and highly scalable multi-
 
 It is natively designed to support local testing using **LangGraph Studio**, handles enterprise-grade automation via **GitHub Actions CI/CD pipelines**, and provisions serverless **Amazon Bedrock AgentCore Runtime microVM environments** via **Terraform**—enabling an absolute zero-cost state on `terraform destroy`.
 
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the current platform architecture and email workflow diagrams.
+
 ---
 
 ## 📂 1. Project Directory Structure
