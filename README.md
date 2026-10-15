@@ -40,6 +40,104 @@ langgraph-multi-agent-platform/
 
 ---
 
+# 🎨 How to Test Locally Using LangGraph Studio
+
+Follow these simple steps to run your agent locally for free using **Groq** before moving to AWS.
+
+---
+
+### 🧱 Step 1: Set Up Python and Dependencies
+
+1. Install Python on your machine:
+   ```bash
+   brew install python
+   ```
+2. Open your terminal and go to your project folder:
+   ```bash
+   cd langgraph-multi-agent-platform
+   ```
+3. Create a local virtual environment:
+   ```bash
+   python3 -m venv .venv
+   ```
+4. Activate the virtual environment:
+   ```bash
+   source .venv/bin/activate
+   ```
+5. Install your project packages:
+   ```bash
+   pip install -r app/requirements.txt
+   ```
+6. Install the LangGraph developer tool:
+   ```bash
+   pip install -U "langgraph-cli[inmem]"
+   ```
+
+---
+
+### 🔐 Step 2: Set Up Your Secrets File
+
+1. Copy the example configuration file:
+   ```bash
+   cp .env.example .env
+   ```
+2. Open the new `.env` file and add your real keys, setting `ENV_TARGET` to `"local"`:
+   ```text
+   ENV_TARGET="local"
+   GROQ_API_KEY="gsk_your_actual_free_groq_key_here"
+   
+   SENDER_EMAIL="your-email@gmail.com"
+   GMAIL_APP_PASSWORD="your-16-digit-gmail-app-password"
+   SMTP_SERVER="://gmail.com"
+   SMTP_PORT="587"
+   ```
+
+---
+
+### 🏃‍♂️ Step 3: Start the Local Server
+
+1. Go to [LangSmith](https://smith.langchain.com/) in your browser and sign up for a free account.
+2. Go back to your terminal and start the server:
+   ```bash
+   langgraph dev
+   ```
+3. You will see this exact successful output in your terminal:
+   ```text
+   Welcome to
+
+   ╦  ┌─┐┌┐┌┌─┐╔═╗┬─┐┌─┐┌─┐┬ ┬
+   ║  ├─┤││││ ┬║ ╦├┬┘├─┤├─┘├─┤
+   ╩═╝┴ ┴┘└┘└─┘╚═╝┴└─┴ ┴┴  ┴ ┴
+
+   - 🚀 API: http://127.0.0.1:2024
+   - 🎨 Studio UI: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
+   - 📚 API Docs: http://127.0.0.1:2024/docs
+   ```
+4. Click the **`Studio UI`** link directly from your terminal logs (`https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024`) to open the visual dashboard in your browser.
+
+---
+
+### 🔬 Step 4: Run and Test Your Agent
+
+1. On the left side of the screen, expand the **`Question`** input field.
+2. Type your test message inside it, for example:
+   ```text
+   Send a leave request to my manager Rahul Kumar from Oct 20 to Oct 25 2026. His email is abc@gmail.com
+   ```
+3. Click the blue **`Submit`** button at the bottom of the left panel to start running.
+4. Watch the visual graph turn green and automatically pause at the pink **`review_node`**.
+5. Look at the right side of the screen to see the generated email draft.
+6. **To update the draft:** Type your feedback in the right-side box (e.g., *"Make it formal"*) and click submit to re-draft.
+7. **To send the email:** Type **`yes`** in the right-side box and click submit to fire the real email via Gmail SMTP.
+
+---
+
+### 🧽 Step 5: How to Start a Fresh Test Run
+
+1. If you hit the feedback limit cap or want to start a completely fresh test, press **`Ctrl + C`** in your terminal to stop the server.
+2. Run **`langgraph dev`** again to restart the server with a clean state slate.
+3. Refresh your browser page to reset your variables and start over cleanly.
+
 ## 🛠️ 2. Step-by-Step Initial Machine Setup
 
 If cloning this repository onto a fresh laptop or reconstructing the space from scratch, execute these configuration phases in chronological order:
@@ -185,102 +283,3 @@ terraform destroy -auto-approve
 ```
 
 Because `force_destroy = true` is hardcoded directly inside your ECR module block, Terraform will cleanly override protection barriers, wipe out your uploaded Docker images, erase your IAM rules, and dismantle your serverless Bedrock runtime environments in seconds—dropping your platform asset footprint billing status straight back to **zero dollars**.
-
-
-# 🎨 How to Test Locally Using LangGraph Studio
-
-Follow these simple steps to run your agent locally for free using **Groq** before moving to AWS.
-
----
-
-### 🧱 Step 1: Set Up Python and Dependencies
-
-1. Install Python on your machine:
-   ```bash
-   brew install python
-   ```
-2. Open your terminal and go to your project folder:
-   ```bash
-   cd langgraph-multi-agent-platform
-   ```
-3. Create a local virtual environment:
-   ```bash
-   python3 -m venv .venv
-   ```
-4. Activate the virtual environment:
-   ```bash
-   source .venv/bin/activate
-   ```
-5. Install your project packages:
-   ```bash
-   pip install -r app/requirements.txt
-   ```
-6. Install the LangGraph developer tool:
-   ```bash
-   pip install -U "langgraph-cli[inmem]"
-   ```
-
----
-
-### 🔐 Step 2: Set Up Your Secrets File
-
-1. Copy the example configuration file:
-   ```bash
-   cp .env.example .env
-   ```
-2. Open the new `.env` file and add your real keys, setting `ENV_TARGET` to `"local"`:
-   ```text
-   ENV_TARGET="local"
-   GROQ_API_KEY="gsk_your_actual_free_groq_key_here"
-   
-   SENDER_EMAIL="your-email@gmail.com"
-   GMAIL_APP_PASSWORD="your-16-digit-gmail-app-password"
-   SMTP_SERVER="://gmail.com"
-   SMTP_PORT="587"
-   ```
-
----
-
-### 🏃‍♂️ Step 3: Start the Local Server
-
-1. Go to [LangSmith](https://smith.langchain.com/) in your browser and sign up for a free account.
-2. Go back to your terminal and start the server:
-   ```bash
-   langgraph dev
-   ```
-3. You will see this exact successful output in your terminal:
-   ```text
-   Welcome to
-
-   ╦  ┌─┐┌┐┌┌─┐╔═╗┬─┐┌─┐┌─┐┬ ┬
-   ║  ├─┤││││ ┬║ ╦├┬┘├─┤├─┘├─┤
-   ╩═╝┴ ┴┘└┘└─┘╚═╝┴└─┴ ┴┴  ┴ ┴
-
-   - 🚀 API: http://127.0.0.1:2024
-   - 🎨 Studio UI: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
-   - 📚 API Docs: http://127.0.0.1:2024/docs
-   ```
-4. Click the **`Studio UI`** link directly from your terminal logs (`https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024`) to open the visual dashboard in your browser.
-
----
-
-### 🔬 Step 4: Run and Test Your Agent
-
-1. On the left side of the screen, expand the **`Question`** input field.
-2. Type your test message inside it, for example:
-   ```text
-   Send a leave request to my manager Rahul Kumar from Oct 20 to Oct 25 2026. His email is abc@gmail.com
-   ```
-3. Click the blue **`Submit`** button at the bottom of the left panel to start running.
-4. Watch the visual graph turn green and automatically pause at the pink **`review_node`**.
-5. Look at the right side of the screen to see the generated email draft.
-6. **To update the draft:** Type your feedback in the right-side box (e.g., *"Make it formal"*) and click submit to re-draft.
-7. **To send the email:** Type **`yes`** in the right-side box and click submit to fire the real email via Gmail SMTP.
-
----
-
-### 🧽 Step 5: How to Start a Fresh Test Run
-
-1. If you hit the feedback limit cap or want to start a completely fresh test, press **`Ctrl + C`** in your terminal to stop the server.
-2. Run **`langgraph dev`** again to restart the server with a clean state slate.
-3. Refresh your browser page to reset your variables and start over cleanly.
