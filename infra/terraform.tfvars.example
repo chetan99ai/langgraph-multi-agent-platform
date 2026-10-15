@@ -1,0 +1,12 @@
+# --- Real Deployment Ingress Parameters (Local Testing Only) ---
+# Target AWS Settings
+aws_region       = ""
+bedrock_model_id = ""
+
+# 🔐 Your Real Credentials (Terraform will feed these straight into the AWS Bedrock environment securely)
+sender_email       = "<your host email>"
+gmail_app_password = "abcd-efgh-ijkl-mnop" # Your 16-character Gmail App Password
+
+# SMTP Server Configurations
+smtp_server = ""
+smtp_port   = "587"

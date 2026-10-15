@@ -1,0 +1,8 @@
+# Shared platform dependencies
+
+langgraph>=0.1.0
+langchain-core
+langchain-aws
+langchain-groq
+pydantic>=2.0.0
+bedrock-agentcore>=1.0.0
