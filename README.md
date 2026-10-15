@@ -8,7 +8,7 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for the current platform architecture a
 
 ---
 
-## 📂 1. Project Directory Structure
+## 📂 Project Directory Structure
 
 ```text
 langgraph-multi-agent-platform/
@@ -140,7 +140,14 @@ Follow these simple steps to run your agent locally for free using **Groq** befo
 2. Run **`langgraph dev`** again to restart the server with a clean state slate.
 3. Refresh your browser page to reset your variables and start over cleanly.
 
-## 🛠️ 2. Step-by-Step Initial Machine Setup
+
+
+
+---
+
+# Additional Information
+
+## 🛠️ 1. Step-by-Step Initial Machine Setup
 
 If cloning this repository onto a fresh laptop or reconstructing the space from scratch, execute these configuration phases in chronological order:
 
@@ -175,7 +182,7 @@ If cloning this repository onto a fresh laptop or reconstructing the space from 
 
 ---
 
-## 🎨 3. Local Verification (LangGraph Studio Testing)
+## 🎨 2. Local Verification (LangGraph Studio Testing)
 
 Test and debug your graph execution paths locally without provisioning or spending money on cloud resources.
 
@@ -197,7 +204,7 @@ Test and debug your graph execution paths locally without provisioning or spendi
 
 ---
 
-## 🏗️ 4. AWS Cloud Infrastructure Deployment (Terraform)
+## 🏗️ 3. AWS Cloud Infrastructure Deployment (Terraform)
 
 When your local tests pass and you are ready to stage the system onto your live paid AWS environment, execute the manual baseline mapping:
 
@@ -255,7 +262,7 @@ When your local tests pass and you are ready to stage the system onto your live 
 
 ---
 
-## 🤖 5. Automated CI/CD (GitHub Actions Integration)
+## 🤖 4. Automated CI/CD (GitHub Actions Integration)
 
 This repository includes a pre-configured continuous integration pipeline inside `.github/workflows/deploy.yml`. To activate seamless automated deployments whenever you push code changes to GitHub:
 
@@ -273,7 +280,7 @@ This repository includes a pre-configured continuous integration pipeline inside
 
 ---
 
-## 🧼 6. The Total Cost-Control Kill Switch (Saving Money)
+## 🧼 5. The Total Cost-Control Kill Switch (Saving Money)
 
 Because your entire application architecture runs on top of completely serverless resources, you only pay for active execution traffic and basic low-cost image layer persistence. 
 
